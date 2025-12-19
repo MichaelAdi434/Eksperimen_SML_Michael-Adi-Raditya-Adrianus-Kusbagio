@@ -95,4 +95,4 @@ class TextPreprocessor:
 
 if __name__ == "__main__":
     prep = TextPreprocessor()
-    prep.run_pipeline('data/ulasan_apk.csv', 'data/processed_data.csv')
+    prep.run_pipeline('data/ulasan_apk.csv', 'preprocessing/ulasan_apk_preprocessing.csv')
