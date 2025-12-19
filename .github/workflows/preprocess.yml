@@ -3,7 +3,7 @@ name: Automated Data Preprocessing
 on:
   push:
     paths:
-      - 'ulasan_apk.csv' # Trigger aktif saat file ini di-update
+      - 'tes/ulasan_apk.csv' # Trigger aktif saat file ini di-update
   workflow_dispatch:          # Memungkinkan trigger manual
 
 jobs:
