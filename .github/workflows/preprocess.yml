@@ -1,0 +1,34 @@
+name: Automated Data Preprocessing
+
+on:
+  push:
+    paths:
+      - 'ulasan_apk.csv' # Trigger aktif saat file ini di-update
+  workflow_dispatch:          # Memungkinkan trigger manual
+
+jobs:
+  preprocess:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
+        run: |
+          pip install pandas requests openpyxl nltk
+
+      - name: Run Preprocessing Script
+        run: python automate_Michael Adi Raditya Adrianus Kusbagio.py
+
+      - name: Commit and Push Processed Data
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/processed_data.csv
+          git commit -m "Update processed dataset" || echo "No changes to commit"
+          git push
