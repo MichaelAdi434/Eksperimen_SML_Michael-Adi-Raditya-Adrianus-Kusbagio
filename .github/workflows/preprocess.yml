@@ -3,7 +3,7 @@ name: Automated Data Preprocessing
 on:
   push:
     paths:
-      - 'tes/ulasan_apk.csv' # Trigger aktif saat file ini di-update
+      - 'data/ulasan_apk.csv' # Trigger aktif saat file ini di-update
   workflow_dispatch:          # Memungkinkan trigger manual
 
 jobs:
@@ -29,6 +29,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add data/processed_data.csv
+          git add preprocessing/ulasan_apk_preprocessing.csv
           git commit -m "Update processed dataset" || echo "No changes to commit"
           git push
