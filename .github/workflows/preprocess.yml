@@ -23,7 +23,7 @@ jobs:
           pip install pandas requests openpyxl nltk
 
       - name: Run Preprocessing Script
-        run: python automate_Michael Adi Raditya Adrianus Kusbagio.py
+        run: python automate_Michael_Adi_Raditya_Adrianus_Kusbagio.py
 
       - name: Commit and Push Processed Data
         run: |
