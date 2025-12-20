@@ -5,8 +5,12 @@ on:
     branches:
       - main
     paths:
-      - 'data/ulasan_apk.csv'  # Trigger aktif saat file ini di-update
-  workflow_dispatch:           # Memungkinkan trigger manual dari tab Actions
+      - 'data/ulasan_apk.csv'
+  workflow_dispatch:
+
+# Tambahkan baris ini untuk memberikan izin write
+permissions:
+  contents: write
 
 jobs:
   preprocess:
@@ -14,6 +18,9 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+        with:
+          # Menggunakan token bawaan untuk autentikasi push
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -30,10 +37,8 @@ jobs:
 
       - name: Commit and Push Processed Data
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          # Pastikan path ini sesuai dengan output_path di script Python Anda
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
           git add data/processed_data.csv
-          # [skip ci] digunakan agar commit ini tidak memicu workflow berjalan lagi
           git commit -m "Update processed dataset [skip ci]" || echo "No changes to commit"
-          git push
+          git push origin main
