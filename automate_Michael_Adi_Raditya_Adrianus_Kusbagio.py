@@ -117,4 +117,4 @@ class TextPreprocessor:
 if __name__ == "__main__":
     prep = TextPreprocessor()
     # Path disesuaikan untuk workflow GitHub Actions
-    prep.run_pipeline('data/ulasan_apk.csv', 'data/processed_data.csv')
+    prep.run_pipeline('data/ulasan_apk.csv', 'preprocessing/processed_data.csv')
